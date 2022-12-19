@@ -35,7 +35,7 @@ inline double GetTime()
 // 印出計算後的時間
 void Print_Time(double TimeAdd, int i, string TypeKeys) {
     fstream outfile;
-    outfile.open("C:\\Users\\MSI GP65\\Desktop\\Sroting 資料\\Sort - CostTime\\Time - STD_Vector-Bubble_sort.txt", ios::app);
+    outfile.open("C:\\Users\\MSI GP65\\source\\repos\\Data_structure - 排序法\\Sort - CostTime\\Time - STD_Vector-Bubble_sort.txt", ios::app);
 
     if (TimeAdd < 1000)
     {
@@ -240,9 +240,9 @@ int main()
             intVector.resize(i);
 
             Produce_random(intVector, 'I');
-            for (auto temp : intVector) { cout << temp << " "; }
+            //for (auto temp : intVector) { cout << temp << " "; }
             Bubble_sort(intVector, "Int");
-            for (auto temp : intVector) { cout << temp << " "; }
+            //for (auto temp : intVector) { cout << temp << " "; }
         }
 
         for (int i = 100000; i <= 600000; i += 100000)

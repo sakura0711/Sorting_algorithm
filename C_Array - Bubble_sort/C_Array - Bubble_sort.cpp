@@ -30,7 +30,7 @@ double GetTime()
 // 印出計算後的時間
 void Print_Time(int i, double TimeAdd) {
     fstream outfile;
-    outfile.open("C:\\Users\\MSI GP65\\Desktop\\Sroting 資料\\Sort - CostTime\\Time - C_Array-Bubble_sort.txt", ios::app);
+    outfile.open("C:\\Users\\MSI GP65\\source\\repos\\Data_structure - 排序法\\Sort - CostTime\\Time - C_Array-Bubble_sort.txt", ios::app);
     if (TimeAdd < 1000)
     {
         outfile << "排序" << i << "筆資料所花費時間: "

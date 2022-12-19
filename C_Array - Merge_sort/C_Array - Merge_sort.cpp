@@ -31,7 +31,7 @@ double GetTime()
 void Print_Time(int i, double TimeAdd) {
 
     ofstream outfile;
-    outfile.open("C:\\Users\\MSI GP65\\Desktop\\Sroting 資料\\Sort - CostTime\\Time - C_Array-Merge_sort.txt", ios::app);
+    outfile.open("C:\\Users\\MSI GP65\\source\\repos\\Data_structure - 排序法\\Sort - CostTime\\Time - C_Array-Merge_sort.txt", ios::app);
 
     if (TimeAdd < 1000)
     {

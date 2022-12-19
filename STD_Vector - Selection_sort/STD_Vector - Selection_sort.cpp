@@ -35,7 +35,7 @@ inline double GetTime()
 // 印出計算後的時間
 void Print_Time(double TimeAdd, int i, string TypeKeys) {
     fstream outfile;
-    outfile.open("C:\\Users\\MSI GP65\\Desktop\\Sroting 資料\\Sort - CostTime\\Time - STD_Vector-Selection_sort.txt", ios::app);
+    outfile.open("C:\\Users\\MSI GP65\\source\\repos\\Data_structure - 排序法\\Sort - CostTime\\Time - STD_Vector-Selection_sort.txt", ios::app);
 
     if (TimeAdd < 1000)
     {
@@ -163,7 +163,7 @@ void Produce_Str_random(vector<T>& pData)
             // 0~25的亂數加上 97 就會剛好落在97~122之間，換算成ACSII碼就是小寫a~z
             StringTemp += (char)(rand() % 26) + (97);
         }
-        pData.push_back(StringTemp);
+        pData[i] = StringTemp;
     }
 }
 
@@ -255,7 +255,7 @@ int main()
             //for (auto temp : intVector) { cout << temp << " "; }
         }
 
-        for (int i = 100000; i <= 600000; i += 100000)
+        for (int i = 100000; i <= 500000; i += 100000)
         {
             intVector.clear();
             intVector.resize(i);

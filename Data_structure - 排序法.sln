@@ -37,6 +37,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sort - CostTime", "Sort - C
 		..\..\..\Desktop\Sroting 資料\Sort - CostTime\Time - STD_Array-Insertion_sort.txt = ..\..\..\Desktop\Sroting 資料\Sort - CostTime\Time - STD_Array-Insertion_sort.txt
 		..\..\..\Desktop\Sroting 資料\Sort - CostTime\Time - STD_Array-Merge_sort.txt = ..\..\..\Desktop\Sroting 資料\Sort - CostTime\Time - STD_Array-Merge_sort.txt
 		..\..\..\Desktop\Sroting 資料\Sort - CostTime\Time - STD_Array-Selection_sort.txt = ..\..\..\Desktop\Sroting 資料\Sort - CostTime\Time - STD_Array-Selection_sort.txt
+		Time - STD_Vector-Bubble_sort.txt = Time - STD_Vector-Bubble_sort.txt
+		Time - STD_Vector-Insertion_sort.txt = Time - STD_Vector-Insertion_sort.txt
+		Time - STD_Vector-Merge_sort.txt = Time - STD_Vector-Merge_sort.txt
+		Time - STD_Vector-Selection_sort.txt = Time - STD_Vector-Selection_sort.txt
 	EndProjectSection
 EndProject
 Global

@@ -27,6 +27,18 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "STD_Vector - Merge_sort", "
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "STD_Vector - Selection_sort", "STD_Vector - Selection_sort\STD_Vector - Selection_sort.vcxproj", "{2AF1373C-B649-48FA-A54B-3ADC9D9C440C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sort - CostTime", "Sort - CostTime", "{24AAE928-A8FA-426E-9AC0-C166CE7963BA}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\Desktop\Sroting 資料\Sort - CostTime\Time - C_Array-Bubble_sort.txt = ..\..\..\Desktop\Sroting 資料\Sort - CostTime\Time - C_Array-Bubble_sort.txt
+		..\..\..\Desktop\Sroting 資料\Sort - CostTime\Time - C_Array-Insertion_sort.txt = ..\..\..\Desktop\Sroting 資料\Sort - CostTime\Time - C_Array-Insertion_sort.txt
+		..\..\..\Desktop\Sroting 資料\Sort - CostTime\Time - C_Array-Merge_sort.txt = ..\..\..\Desktop\Sroting 資料\Sort - CostTime\Time - C_Array-Merge_sort.txt
+		..\..\..\Desktop\Sroting 資料\Sort - CostTime\Time - C_Array-Selection_sort.txt = ..\..\..\Desktop\Sroting 資料\Sort - CostTime\Time - C_Array-Selection_sort.txt
+		..\..\..\Desktop\Sroting 資料\Sort - CostTime\Time - STD_Array-Bubble_sort.txt = ..\..\..\Desktop\Sroting 資料\Sort - CostTime\Time - STD_Array-Bubble_sort.txt
+		..\..\..\Desktop\Sroting 資料\Sort - CostTime\Time - STD_Array-Insertion_sort.txt = ..\..\..\Desktop\Sroting 資料\Sort - CostTime\Time - STD_Array-Insertion_sort.txt
+		..\..\..\Desktop\Sroting 資料\Sort - CostTime\Time - STD_Array-Merge_sort.txt = ..\..\..\Desktop\Sroting 資料\Sort - CostTime\Time - STD_Array-Merge_sort.txt
+		..\..\..\Desktop\Sroting 資料\Sort - CostTime\Time - STD_Array-Selection_sort.txt = ..\..\..\Desktop\Sroting 資料\Sort - CostTime\Time - STD_Array-Selection_sort.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64

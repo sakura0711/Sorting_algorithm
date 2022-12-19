@@ -275,7 +275,7 @@ int main()
             Selection_sort(longintVector, "Long int");
         }
 
-        for (int i = 100000; i <= 600000; i += 100000)
+        for (int i = 100000; i <= 500000; i += 100000)
         {
             longintVector.clear();
             longintVector.resize(i);
@@ -295,7 +295,7 @@ int main()
             Selection_sort(floatVector, "Float");
         }
 
-        for (int i = 100000; i <= 600000; i += 100000)
+        for (int i = 100000; i <= 500000; i += 100000)
         {
             floatVector.clear();
             floatVector.resize(i);
@@ -314,7 +314,7 @@ int main()
             Selection_sort(doubleVector, "Double");
         }
 
-        for (int i = 100000; i <= 600000; i += 100000)
+        for (int i = 100000; i <= 500000; i += 100000)
         {
             doubleVector.clear();
             doubleVector.resize(i);
@@ -334,7 +334,7 @@ int main()
             Selection_sort(stringVector, "String");
         }
 
-        for (int i = 10000; i <= 10000; i += 10000)
+        for (int i = 100000; i <= 500000; i += 100000)
         {
             stringVector.clear();
             stringVector.resize(i);

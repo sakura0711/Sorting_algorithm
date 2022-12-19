@@ -155,7 +155,7 @@ void Produce_Str_random(vector<T>& pData)
             // 0~25的亂數加上 97 就會剛好落在97~122之間，換算成ACSII碼就是小寫a~z
             StringTemp += (char)(rand() % 26) + (97);
         }
-        pData.push_back(StringTemp);
+        pData[i]=StringTemp;
     }
 }
 
@@ -247,7 +247,7 @@ int main()
             //for (auto temp : intVector) { cout << temp << " "; }
         }
 
-        for (int i = 100000; i <= 600000; i += 100000)
+        for (int i = 100000; i <= 500000; i += 100000)
         {
             intVector.clear();
             intVector.resize(i);
@@ -267,7 +267,7 @@ int main()
             Insertion_sort(longintVector, "Long int");
         }
 
-        for (int i = 100000; i <= 600000; i += 100000)
+        for (int i = 100000; i <= 500000; i += 100000)
         {
             longintVector.clear();
             longintVector.resize(i);
@@ -287,7 +287,7 @@ int main()
             Insertion_sort(floatVector, "Float");
         }
 
-        for (int i = 100000; i <= 600000; i += 100000)
+        for (int i = 100000; i <= 500000; i += 100000)
         {
             floatVector.clear();
             floatVector.resize(i);
@@ -306,7 +306,7 @@ int main()
             Insertion_sort(doubleVector, "Double");
         }
 
-        for (int i = 100000; i <= 600000; i += 100000)
+        for (int i = 100000; i <= 500000; i += 100000)
         {
             doubleVector.clear();
             doubleVector.resize(i);
@@ -326,7 +326,7 @@ int main()
             Insertion_sort(stringVector, "String");
         }
 
-        for (int i = 10000; i <= 10000; i += 10000)
+        for (int i = 100000; i <= 500000; i += 100000)
         {
             stringVector.clear();
             stringVector.resize(i);

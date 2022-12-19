@@ -153,7 +153,7 @@ void Produce_Str_random(vector<T>& pData)
             // 0~25的亂數加上 97 就會剛好落在97~122之間，換算成ACSII碼就是小寫a~z
             StringTemp += (char)(rand() % 26) + (97);
         }
-        pData.push_back(StringTemp);
+        pData[i]=StringTemp;
     }
 }
 
@@ -232,6 +232,7 @@ int main()
     }
     else if (printSelect == 'N')
     {
+        /*
         // (int)整數型態
         cout << "\n# (int)整數型態---------------\n" << endl;
         for (int i = 10; i <= 60; i += 10)
@@ -245,7 +246,7 @@ int main()
             //for (auto temp : intVector) { cout << temp << " "; }
         }
 
-        for (int i = 100000; i <= 600000; i += 100000)
+        for (int i = 100000; i <= 500000; i += 100000)
         {
             intVector.clear();
             intVector.resize(i);
@@ -265,7 +266,7 @@ int main()
             Bubble_sort(longintVector, "Long int");
         }
 
-        for (int i = 100000; i <= 600000; i += 100000)
+        for (int i = 100000; i <= 500000; i += 100000)
         {
             longintVector.clear();
             longintVector.resize(i);
@@ -285,7 +286,7 @@ int main()
             Bubble_sort(floatVector, "Float");
         }
 
-        for (int i = 100000; i <= 600000; i += 100000)
+        for (int i = 100000; i <= 500000; i += 100000)
         {
             floatVector.clear();
             floatVector.resize(i);
@@ -304,14 +305,14 @@ int main()
             Bubble_sort(doubleVector, "Double");
         }
 
-        for (int i = 100000; i <= 600000; i += 100000)
+        for (int i = 100000; i <= 500000; i += 100000)
         {
             doubleVector.clear();
             doubleVector.resize(i);
 
             Produce_random(doubleVector, 'D');
             Bubble_sort(doubleVector, "Double");
-        }
+        }*/
 
         // (string)字串型態，6個字母
         cout << "\n# (string)字串型態，6個字母---------------\n" << endl;
@@ -324,7 +325,7 @@ int main()
             Bubble_sort(stringVector, "String");
         }
 
-        for (int i = 10000; i <= 10000; i += 10000)
+        for (int i = 100000; i <= 500000; i += 100000)
         {
             stringVector.clear();
             stringVector.resize(i);

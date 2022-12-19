@@ -7,6 +7,7 @@
 #include <iomanip>
 #include <string>
 #include <vector>
+#include <fstream>
 using namespace std;
 
 double PCFreq = 0.0; // PC內的電磁頻率
@@ -33,29 +34,32 @@ inline double GetTime()
 }
 // 印出計算後的時間
 void Print_Time(double TimeAdd, int i, string TypeKeys) {
+    fstream outfile;
+    outfile.open("C:\\Users\\MSI GP65\\Desktop\\Sroting 資料\\Sort - CostTime\\Time - STD_Vector-Bubble_sort.txt", ios::app);
+
     if (TimeAdd < 1000)
     {
-        cout << "\n"
+        outfile << "\n"
             << "(" << TypeKeys << ")"
             << "排序" << i << "筆資料所花費時間: "
-            << TimeAdd << " 毫秒\n"
-            << endl;
+            << TimeAdd << " 毫秒\n";
+        outfile.close();
     }
     else if (TimeAdd < 60000)
     {
-        cout << "\n"
+        outfile << "\n"
             << "(" << TypeKeys << ")"
             << "排序" << i << "筆資料所花費時間: "
-            << TimeAdd / 1000.0 << " 秒\n"
-            << endl;
+            << TimeAdd / 1000.0 << " 秒\n";
+        outfile.close();
     }
     else
     {
-        cout << "\n"
+        outfile << "\n"
             << "(" << TypeKeys << ")"
             << "排序" << i << "筆資料所花費時間: "
-            << TimeAdd / (1000.0 * 60) << " 分\n"
-            << endl;
+            << TimeAdd / (1000.0 * 60) << " 分\n";
+        outfile.close();
     }
 }
 

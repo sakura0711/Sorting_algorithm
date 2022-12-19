@@ -1,20 +1,366 @@
-﻿// STD_Vector - Merge_sort.cpp : 此檔案包含 'main' 函式。程式會於該處開始執行及結束執行。
-//
+﻿#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <windows.h>
+#include <array>
+#include <algorithm>
+#include <iomanip>
+#include <string>
+#include <vector>
+#include <fstream>
+using namespace std;
 
-#include <iostream>
+double PCFreq = 0.0; // PC內的電磁頻率
+__int64 CounterStart = 0;
+
+// 計時開始
+void StartTime()
+{
+    LARGE_INTEGER li;  // 帶符號的 64 位整數。
+    if (!QueryPerformanceFrequency(&li))
+        cout << "QueryPerformanceFrequency failed!\n";
+
+    PCFreq = double(li.QuadPart) / 1000.0;
+
+    QueryPerformanceCounter(&li);
+    CounterStart = li.QuadPart;
+}
+// 取得經過的時間
+inline double GetTime()
+{
+    LARGE_INTEGER li;
+    QueryPerformanceCounter(&li);
+    return double(li.QuadPart - CounterStart) / PCFreq;
+}
+// 印出計算後的時間
+void Print_Time(double TimeAdd, int i, string TypeKeys) {
+    fstream outfile;
+    outfile.open("C:\\Users\\MSI GP65\\source\\repos\\Data_structure - 排序法\\Sort - CostTime\\Time - STD_Vector-Merge_sort.txt", ios::app);
+
+    if (TimeAdd < 1000)
+    {
+        outfile << "\n"
+            << "(" << TypeKeys << ")"
+            << "排序" << i << "筆資料所花費時間: "
+            << TimeAdd << " 毫秒\n";
+        outfile.close();
+    }
+    else if (TimeAdd < 60000)
+    {
+        outfile << "\n"
+            << "(" << TypeKeys << ")"
+            << "排序" << i << "筆資料所花費時間: "
+            << TimeAdd / 1000.0 << " 秒\n";
+        outfile.close();
+    }
+    else
+    {
+        outfile << "\n"
+            << "(" << TypeKeys << ")"
+            << "排序" << i << "筆資料所花費時間: "
+            << TimeAdd / (1000.0 * 60) << " 分\n";
+        outfile.close();
+    }
+}
+
+// 排序用 (排序法)
+// 排序用 (排序法STD_array)
+template<typename T>
+void merge(vector<T>& pData, int left, int mid, int right) noexcept
+{
+    int subArrayOne = mid - left + 1;
+    int subArrayTwo = right - mid;
+
+    // Create temp arrays
+    T* leftArray = new T[subArrayOne],
+     * rightArray = new T[subArrayTwo];
+
+
+    // Copy data to temp arrays leftArray[] and rightArray[]
+    for (auto i = 0; i < subArrayOne; i++)
+        leftArray[i] = pData[left + i];
+    for (auto j = 0; j < subArrayTwo; j++)
+        rightArray[j] = pData[mid + 1 + j];
+
+    auto indexOfSubArrayOne
+        = 0, // Initial index of first sub-array
+        indexOfSubArrayTwo
+        = 0; // Initial index of second sub-array
+    int indexOfMergedArray
+        = left; // Initial index of merged array
+
+    // Merge the temp arrays back into array[left..right]
+    while (indexOfSubArrayOne < subArrayOne
+        && indexOfSubArrayTwo < subArrayTwo) {
+        if (leftArray[indexOfSubArrayOne]
+            <= rightArray[indexOfSubArrayTwo]) {
+            pData[indexOfMergedArray]
+                = leftArray[indexOfSubArrayOne];
+            indexOfSubArrayOne++;
+        }
+        else {
+            pData[indexOfMergedArray]
+                = rightArray[indexOfSubArrayTwo];
+            indexOfSubArrayTwo++;
+        }
+        indexOfMergedArray++;
+    }
+    // Copy the remaining elements of
+    // left[], if there are any
+    while (indexOfSubArrayOne < subArrayOne) {
+        pData[indexOfMergedArray]
+            = leftArray[indexOfSubArrayOne];
+        indexOfSubArrayOne++;
+        indexOfMergedArray++;
+    }
+    // Copy the remaining elements of
+    // right[], if there are any
+    while (indexOfSubArrayTwo < subArrayTwo) {
+        pData[indexOfMergedArray]
+            = rightArray[indexOfSubArrayTwo];
+        indexOfSubArrayTwo++;
+        indexOfMergedArray++;
+    }
+
+    delete[] leftArray;
+    delete[] rightArray;
+    //return temp;
+}
+// begin is for left index and end is
+// right index of the sub-array
+// of arr to be sorted */
+template<typename T>
+void mergeSort(vector<T>& pData, int begin, int end, bool Fristjudge)
+{
+    if (Fristjudge) {
+        StartTime();
+    }
+    //array<TypeA, nSize> temp{};
+    if (begin < end) {
+        int mid = begin + (end - begin) / 2;
+        mergeSort(pData, begin, mid, false);
+        mergeSort(pData, mid + 1, end, false);
+        merge(pData, begin, mid, end);
+    }
+}
+
+
+// 印出排序後的陣列(STD_array)
+template <typename T>
+void Print(vector<T>& pData)
+{
+    //while 迴圈為取得資料位數，利於用setw()排版
+    int Digits = 0, SizeTemp = pData.size;
+    while (SizeTemp >= 10) {
+        SizeTemp /= 10;
+        Digits++;
+    }
+
+    cout << "資料: ";
+    for (int i = 0; i < SizeTemp; i++) {
+        cout << setw(Digits) << pData[i] << " ";
+        if (i % 20 == 0 && i > 20) { cout << endl; }
+    }
+    cout << endl;
+}
+
+// 產生亂數(STD_array)
+template<typename T>
+void Produce_random(vector<T>& pData, char TypeKey) noexcept
+{
+    int nSize = pData.size();
+    srand(time(NULL));
+    switch (TypeKey) {
+    case 'I':
+        for (int i = 0; i < nSize; i++)
+        {
+            //pData.emplace_back(rand() % nSize + 1 );
+            pData[i] = rand() % nSize + 1;
+        }
+        break;
+    case 'F':
+        for (int i = 0; i < nSize; i++) {
+            /* 產生 [0, 1) 的浮點數亂數 */
+            pData[i] = (float)rand() / (RAND_MAX + 1.0);
+            // 常數 RAND_MAX 是 rand 函式可傳回的最大值。
+        }
+        break;
+    case 'D':
+        for (int i = 0; i < nSize; i++) {
+            /* 產生 [0, 1) 的浮點數亂數 */
+            pData[i] = (double)rand() / (RAND_MAX + 1.0);
+            // 常數 RAND_MAX 是 rand 函式可傳回的最大值。
+        }
+        break;
+    default:
+        cout << "型別不在搜尋範圍內!" << endl;
+        break;
+    }
+}
+
+// 產生字串亂數(STD_array)
+template<typename T>
+void Produce_Str_random(vector<T>& pData)
+{
+    int nSize = pData.size();
+    srand(time(NULL));
+    for (int i = 0; i < nSize; i++)
+    {
+        string StringTemp;
+        for (int j = 0; j < 6; j++)
+        {
+            // 0~25的亂數加上 97 就會剛好落在97~122之間，換算成ACSII碼就是小寫a~z
+            StringTemp += (char)(rand() % 26) + (97);
+        }
+        pData[i]=StringTemp;
+    }
+}
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    cout << "請問要資料要單筆輸出還是全部輸出(單筆 Y / 全部 N) >";
+    char printSelect = 'N'; //默認全部輸出
+    cin >> printSelect;
+
+    // Vector 宣告**********************
+    vector<int> intVector;
+    vector<long int> longintVector;
+    vector<float> floatVector;
+    vector<double> doubleVector;
+    vector<string> stringVector;
+    /**********************************/
+
+    if (printSelect == 'Y')
+    {
+        short int typeSelect;
+        int dataRecord;
+
+        cout << "\n------請輸入要顯示的數據類型----- \n"
+            << "1. int類型\n"
+            << "2. long int類型\n"
+            << "3. float類型\n"
+            << "4. double類型\n"
+            << "5. string類型\n"
+            << "> ";
+        cin >> typeSelect;
+
+        cout << "要排序幾筆資料> ";
+        cin >> dataRecord;
+
+        switch (typeSelect)
+        {
+        case 1:
+            intVector.clear();
+            intVector.resize(dataRecord);
+
+            Produce_random(intVector, 'I');
+            mergeSort(intVector, 0, dataRecord, true);
+            Print_Time(GetTime(), dataRecord, "Int");
+            break;
+        case 2:
+            longintVector.clear();
+            longintVector.resize(dataRecord);
+
+            Produce_random(longintVector, 'I');
+            mergeSort(longintVector, 0, dataRecord, true);
+            Print_Time(GetTime(), dataRecord, "Long Int");
+            break;
+        case 3:
+            floatVector.clear();
+            floatVector.resize(dataRecord);
+
+            Produce_random(floatVector, 'F');
+            mergeSort(floatVector, 0, dataRecord, true);
+            Print_Time(GetTime(), dataRecord, "Float");
+            break;
+        case 4:
+            doubleVector.clear();
+            doubleVector.resize(dataRecord);
+
+            Produce_random(doubleVector, 'D');
+            mergeSort(doubleVector, 0, dataRecord, true);
+            Print_Time(GetTime(), dataRecord, "Double");
+            break;
+        case 5:
+            stringVector.clear();
+            stringVector.resize(dataRecord);
+
+            Produce_Str_random(stringVector);
+            mergeSort(stringVector, 0, dataRecord, true);
+            Print_Time(GetTime(), dataRecord, "String");
+            break;
+        default:
+            cout << "選項輸入錯誤~!";
+            break;
+        }
+    }
+    else if (printSelect == 'N')
+    {   
+        int dataRecord[] = { 10, 20, 30, 40, 50, 60, 100000, 200000, 300000, 400000, 500000 };
+
+
+        // (int)整數型態
+        cout << "\n# (int)整數型態---------------\n" << endl;
+        for (int i = 0; i < size(dataRecord); i++) 
+        {
+            intVector.clear();
+            intVector.resize(dataRecord[i]);
+
+            Produce_random(intVector, 'I');
+            //for (auto temp : intVector) { cout << temp << " "; }
+            mergeSort(intVector, 0, dataRecord[i] - 1, true);
+            Print_Time(GetTime(), dataRecord[i], "Int");
+            //for (auto temp : intVector) { cout << temp << " "; }
+        }
+
+
+        // (long int)長整數型態
+        cout << "\n# (long int)長整數型態---------------\n" << endl;
+        for (int i = 0; i < size(dataRecord); i++)
+        {
+            longintVector.clear();
+            longintVector.resize(dataRecord[i]);
+
+            Produce_random(longintVector, 'I');
+            mergeSort(longintVector, 0, dataRecord[i] - 1, true);
+            Print_Time(GetTime(), dataRecord[i], "Long int");
+        }
+
+        // (float)浮點數型態
+        cout << "\n# (float)浮點數型態---------------\n" << endl;
+        for (int i = 0; i < size(dataRecord); i++)
+        {
+            floatVector.clear();
+            floatVector.resize(dataRecord[i]);
+
+            Produce_random(floatVector, 'F');
+            mergeSort(floatVector, 0, dataRecord[i] - 1, true);
+            Print_Time(GetTime(), dataRecord[i], "Float");
+        }
+
+        // (double)雙倍精度浮點數型態
+        cout << "\n# (float)浮點數型態---------------\n" << endl;
+        for (int i = 0; i < size(dataRecord); i++)
+        {
+            doubleVector.clear();
+            doubleVector.resize(dataRecord[i]);
+
+            Produce_random(doubleVector, 'D');
+            mergeSort(doubleVector, 0, dataRecord[i] - 1, true);
+            Print_Time(GetTime(), dataRecord[i], "double");
+        }
+
+        // (string)字串型態，6個字母
+        cout << "\n# (string)字串型態，6個字母---------------\n" << endl;
+        for (int i = 0; i < size(dataRecord); i++)
+        {
+            stringVector.clear();
+            stringVector.resize(dataRecord[i]);
+
+            Produce_Str_random(stringVector);
+            mergeSort(stringVector, 0, dataRecord[i] - 1, true);
+            Print_Time(GetTime(), dataRecord[i], "String");
+        }
+    }
+    else { cout << "請輸入正確選項! "; }
 }
-
-// 執行程式: Ctrl + F5 或 [偵錯] > [啟動但不偵錯] 功能表
-// 偵錯程式: F5 或 [偵錯] > [啟動偵錯] 功能表
-
-// 開始使用的提示: 
-//   1. 使用 [方案總管] 視窗，新增/管理檔案
-//   2. 使用 [Team Explorer] 視窗，連線到原始檔控制
-//   3. 使用 [輸出] 視窗，參閱組建輸出與其他訊息
-//   4. 使用 [錯誤清單] 視窗，檢視錯誤
-//   5. 前往 [專案] > [新增項目]，建立新的程式碼檔案，或是前往 [專案] > [新增現有項目]，將現有程式碼檔案新增至專案
-//   6. 之後要再次開啟此專案時，請前往 [檔案] > [開啟] > [專案]，然後選取 .sln 檔案

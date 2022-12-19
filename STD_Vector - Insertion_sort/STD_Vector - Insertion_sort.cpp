@@ -70,6 +70,7 @@ void Insertion_sort(vector<T>& pData, string TypeKeys) noexcept
     int nSize = pData.size();
     float Percent = nSize / 100;
     double TimeAdd = 0.0; //儲存排序時間
+
     T temp;
     int k;
     for (int i = 1; i < nSize; i++)
@@ -234,82 +235,50 @@ int main()
     }
     else if (printSelect == 'N')
     {
+        int dataRecord[] = { 10, 20, 30, 40, 50, 60 };// , 100000, 200000, 300000, 400000, 500000
+
         // (int)整數型態
         cout << "\n# (int)整數型態---------------\n" << endl;
-        for (int i = 10; i <= 60; i += 10)
+        for (int i = 0; i < size(dataRecord); i++)
         {
+            cout << dataRecord[i] << ' ';
             intVector.clear();
-            intVector.resize(i);
+            intVector.resize(dataRecord[i]);
 
             Produce_random(intVector, 'I');
             //for (auto temp : intVector) { cout << temp << " "; }
             Insertion_sort(intVector, "Int");
-            //for (auto temp : intVector) { cout << temp << " "; }
+            for (auto temp : intVector) { cout << temp << " "; }
         }
-
-        for (int i = 100000; i <= 500000; i += 100000)
-        {
-            intVector.clear();
-            intVector.resize(i);
-
-            Produce_random(intVector, 'I');
-            Insertion_sort(intVector, "Int");
-        }
-
+        /*
         // (long int)長整數型態
         cout << "\n# (long int)長整數型態---------------\n" << endl;
-        for (int i = 10; i <= 60; i += 10)
+        for (int i = 0; i < size(dataRecord); i++)
         {
             longintVector.clear();
-            longintVector.resize(i);
+            longintVector.resize(dataRecord[i]);
 
             Produce_random(longintVector, 'I');
-            Insertion_sort(longintVector, "Long int");
-        }
-
-        for (int i = 100000; i <= 500000; i += 100000)
-        {
-            longintVector.clear();
-            longintVector.resize(i);
-
-            Produce_random(longintVector, 'I');
-            Insertion_sort(longintVector, "Long int");
+            Insertion_sort(longintVector, "Long Int");
         }
 
         // (float)浮點數型態
         cout << "\n# (float)浮點數型態---------------\n" << endl;
-        for (int i = 10; i <= 60; i += 10)
-        {
-            intVector.clear();
-            intVector.resize(i);
-
-            Produce_random(floatVector, 'F');
-            Insertion_sort(floatVector, "Float");
-        }
-
-        for (int i = 100000; i <= 500000; i += 100000)
+        for (int i = 0; i < size(dataRecord); i++)
         {
             floatVector.clear();
-            floatVector.resize(i);
+            floatVector.resize(dataRecord[i]);
+
             Produce_random(floatVector, 'F');
             Insertion_sort(floatVector, "Float");
         }
 
         // (double)雙倍精度浮點數型態
         cout << "\n# (double)雙倍精度浮點數型態---------------\n" << endl;
-        for (int i = 10; i <= 60; i += 10)
+        for (int i = 0; i < size(dataRecord); i++)
         {
             doubleVector.clear();
-            doubleVector.resize(i);
-
-            Produce_random(doubleVector, 'D');
-            Insertion_sort(doubleVector, "Double");
-        }
-
-        for (int i = 100000; i <= 500000; i += 100000)
-        {
-            doubleVector.clear();
-            doubleVector.resize(i);
+            doubleVector.resize(dataRecord[i]);
 
             Produce_random(doubleVector, 'D');
             Insertion_sort(doubleVector, "Double");
@@ -317,23 +286,14 @@ int main()
 
         // (string)字串型態，6個字母
         cout << "\n# (string)字串型態，6個字母---------------\n" << endl;
-        for (int i = 10; i <= 60; i += 10)
+        for (int i = 0; i < size(dataRecord); i++)
         {
             stringVector.clear();
-            stringVector.resize(i);
+            stringVector.resize(dataRecord[i]);
 
             Produce_Str_random(stringVector);
             Insertion_sort(stringVector, "String");
-        }
-
-        for (int i = 100000; i <= 500000; i += 100000)
-        {
-            stringVector.clear();
-            stringVector.resize(i);
-
-            Produce_Str_random(stringVector);
-            Insertion_sort(stringVector, "String");
-        }
+        }*/
     }
     else { cout << "請輸入正確選項! "; }
 }

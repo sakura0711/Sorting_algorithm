@@ -72,16 +72,16 @@ void Insertion_sort(vector<T>& pData, string TypeKeys) noexcept
     double TimeAdd = 0.0; //儲存排序時間
 
     T temp;
-    int k;
     for (int i = 1; i < nSize; i++)
     {
         StartTime();
         temp = pData[i];
-        for (k = i; k > 0 && temp < pData[k]; k--)
+        int k;
+        for (k = i -1; k >= 0 && temp < pData[k]; k--)
         {
-            pData[k] = pData[k - 1]; // 比前面小就跟前面的交換
+            pData[k+1] = pData[k]; // 比前面小就跟前面的交換
         }
-        pData[k] = temp;
+        pData[k+1] = temp;
         TimeAdd += GetTime();
         //if (nSize >= 100000) { cout << "\r" << "Complate: " << fixed << setprecision(2) << ((i / Percent) + 0.001) << "%"; }
     }
@@ -235,22 +235,22 @@ int main()
     }
     else if (printSelect == 'N')
     {
-        int dataRecord[] = { 10, 20, 30, 40, 50, 60 };// , 100000, 200000, 300000, 400000, 500000
+        int dataRecord[] = { 10, 20, 30, 40, 50, 60 , 100000, 200000, 300000, 400000, 500000 };
 
         // (int)整數型態
         cout << "\n# (int)整數型態---------------\n" << endl;
         for (int i = 0; i < size(dataRecord); i++)
         {
-            cout << dataRecord[i] << ' ';
+            cout << "\n" << dataRecord[i] << ' ' << endl;
             intVector.clear();
             intVector.resize(dataRecord[i]);
 
             Produce_random(intVector, 'I');
             //for (auto temp : intVector) { cout << temp << " "; }
             Insertion_sort(intVector, "Int");
-            for (auto temp : intVector) { cout << temp << " "; }
+            //for (auto temp : intVector) { cout << temp << " "; }
         }
-        /*
+        
         // (long int)長整數型態
         cout << "\n# (long int)長整數型態---------------\n" << endl;
         for (int i = 0; i < size(dataRecord); i++)
@@ -293,7 +293,7 @@ int main()
 
             Produce_Str_random(stringVector);
             Insertion_sort(stringVector, "String");
-        }*/
+        }
     }
     else { cout << "請輸入正確選項! "; }
 }

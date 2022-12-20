@@ -232,7 +232,7 @@ int main()
     }
     else if (printSelect == 'N')
     {
-        /*
+        
         // (int)整數型態
         cout << "\n# (int)整數型態---------------\n" << endl;
         for (int i = 10; i <= 60; i += 10)
@@ -312,7 +312,7 @@ int main()
 
             Produce_random(doubleVector, 'D');
             Bubble_sort(doubleVector, "Double");
-        }*/
+        }
 
         // (string)字串型態，6個字母
         cout << "\n# (string)字串型態，6個字母---------------\n" << endl;
@@ -325,6 +325,7 @@ int main()
             Bubble_sort(stringVector, "String");
         }
 
+        cout << "\n# (string)字串型態，6個字母---------------\n" << endl;
         for (int i = 100000; i <= 500000; i += 100000)
         {
             stringVector.clear();

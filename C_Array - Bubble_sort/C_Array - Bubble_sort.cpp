@@ -134,101 +134,59 @@ int main()
 {
     cout << "-----------------冒泡排序法-----------------\n" << endl;
 
+    int dataRecord[] = { 10, 20, 30, 40, 50, 60 , 100000, 200000, 300000, 400000, 500000 };
+
     // (int)整數型態
     cout << "\n# (int)整數型態---------------\n" << endl;
-    for (int i = 10; i <= 60; i += 10)
+    for (int i = 0; i < size(dataRecord); i++)
     {
-        int* DATA_Array = new int[i];
-        Produce_random(DATA_Array, i, 'I');
-        Bubble_sort(DATA_Array, i);
-
-        delete[]DATA_Array;
-    }
-
-    for (int i = 100000; i <= 600000; i += 100000)
-    {
-        int* DATA_Array = new int[i];
-        Produce_random(DATA_Array, i, 'I');
-        Bubble_sort(DATA_Array, i);
+        int* DATA_Array = new int[dataRecord[i]];
+        Produce_random(DATA_Array, dataRecord[i], 'I');
+        Bubble_sort(DATA_Array, dataRecord[i]);
 
         delete[]DATA_Array;
     }
 
     // (long int)長整數型態
     cout << "\n# (long int)長整數型態---------------\n" << endl;
-    for (int i = 10; i <= 60; i += 10)
+    for (int i = 0; i < size(dataRecord); i++)
     {
-        long int* DATA_Array = new long int[i];
-        Produce_random<long int>(DATA_Array, i, 'I');
-        Bubble_sort<long int>(DATA_Array, i);
-
-        delete[]DATA_Array;
-    }
-
-    for (int i = 100000; i <= 600000; i += 100000)
-    {
-        long int* DATA_Array = new long int[i];
-        Produce_random<long int>(DATA_Array, i, 'I');
-        Bubble_sort<long int>(DATA_Array, i);
+        long int* DATA_Array = new long int[dataRecord[i]];
+        Produce_random<long int>(DATA_Array, dataRecord[i], 'I');
+        Bubble_sort<long int>(DATA_Array, dataRecord[i]);
 
         delete[]DATA_Array;
     }
 
     // (float)浮點數型態
     cout << "\n# (float)浮點數型態---------------\n" << endl;
-    for (int i = 10; i <= 60; i += 10)
+    for (int i = 0; i < size(dataRecord); i++)
     {
-        float* DATA_Array = new float[i];
-        Produce_random<float>(DATA_Array, i, 'F');
-        Bubble_sort<float>(DATA_Array, i);
-
-        delete[]DATA_Array;
-    }
-
-    for (int i = 100000; i <= 600000; i += 100000)
-    {
-        float* DATA_Array = new float[i];
-        Produce_random<float>(DATA_Array, i, 'F');
-        Bubble_sort<float>(DATA_Array, i);
+        float* DATA_Array = new float[dataRecord[i]];
+        Produce_random<float>(DATA_Array, dataRecord[i], 'F');
+        Bubble_sort<float>(DATA_Array, dataRecord[i]);
 
         delete[]DATA_Array;
     }
 
     // (double)雙倍精度浮點數型態
     cout << "\n# (double)雙倍精度浮點數型態---------------\n" << endl;
-    for (int i = 10; i <= 60; i += 10) {
-        double* DATA_Array = new double[i];
-        Produce_random<double>(DATA_Array, i, 'D');
-        Bubble_sort<double>(DATA_Array, i);
-
-        delete[]DATA_Array;
-    }
-
-    for (int i = 100000; i <= 600000; i += 100000)
+    for (int i = 0; i < size(dataRecord); i++)
     {
-        double* DATA_Array = new double[i];
-        Produce_random<double>(DATA_Array, i, 'D');
-        Bubble_sort<double>(DATA_Array, i);
+        double* DATA_Array = new double[dataRecord[i]];
+        Produce_random<double>(DATA_Array, dataRecord[i], 'D');
+        Bubble_sort<double>(DATA_Array, dataRecord[i]);
 
         delete[]DATA_Array;
     }
 
     // (string)字串型態，6個字母
     cout << "\n# (string)字串型態，6個字母---------------\n" << endl;
-    for (int i = 10; i <= 60; i += 10)
+    for (int i = 0; i < size(dataRecord); i++)
     {
-        string* DATA_Array = new string[i];
+        string* DATA_Array = new string[dataRecord[i]];
         Produce_Str_random<string>(DATA_Array, i);
-        Bubble_sort<string>(DATA_Array, i);
-
-        delete[] DATA_Array;
-    }
-
-    for (int i = 100000; i <= 500000; i += 100000)
-    {
-        string* DATA_Array = new string[i];
-        Produce_Str_random<string>(DATA_Array, i);
-        Bubble_sort<string>(DATA_Array, i);
+        Bubble_sort<string>(DATA_Array, dataRecord[i]);
 
         delete[]DATA_Array;
     }

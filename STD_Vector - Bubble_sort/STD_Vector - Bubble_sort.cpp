@@ -105,6 +105,7 @@ void Print(vector<T>& pData)
     cout << endl;
 }
 
+
 // 產生亂數(STD_array)
 template<typename T>
 void Produce_random(vector<T>& pData, char TypeKey) noexcept

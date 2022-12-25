@@ -233,15 +233,13 @@ int main()
     }
     else if (printSelect == 'N')
     {
-        int dataRecord[] = { 10, 20, 30, 40, 50, 60 , 100000, 200000, 300000, 400000, 500000 };
-
+        
         // (int)整數型態
         cout << "\n# (int)整數型態---------------\n" << endl;
-        for (int i = 0; i < size(dataRecord); i++)
+        for (int i = 10; i <= 60; i += 10)
         {
-            cout << "\n" << dataRecord[i] << ' ' << endl;
             intVector.clear();
-            intVector.resize(dataRecord[i]);
+            intVector.resize(i);
 
             Produce_random(intVector, 'I');
             //for (auto temp : intVector) { cout << temp << " "; }
@@ -249,34 +247,69 @@ int main()
             //for (auto temp : intVector) { cout << temp << " "; }
         }
 
+        for (int i = 100000; i <= 500000; i += 100000)
+        {
+            intVector.clear();
+            intVector.resize(i);
+
+            Produce_random(intVector, 'I');
+            Bubble_sort(intVector, "Int");
+        }
+
         // (long int)長整數型態
         cout << "\n# (long int)長整數型態---------------\n" << endl;
-        for (int i = 0; i < size(dataRecord); i++)
+        for (int i = 10; i <= 60; i += 10)
         {
             longintVector.clear();
-            longintVector.resize(dataRecord[i]);
+            longintVector.resize(i);
 
             Produce_random(longintVector, 'I');
-            Bubble_sort(longintVector, "Long Int");
+            Bubble_sort(longintVector, "Long int");
+        }
+
+        for (int i = 100000; i <= 500000; i += 100000)
+        {
+            longintVector.clear();
+            longintVector.resize(i);
+
+            Produce_random(longintVector, 'I');
+            Bubble_sort(longintVector, "Long int");
         }
 
         // (float)浮點數型態
         cout << "\n# (float)浮點數型態---------------\n" << endl;
-        for (int i = 0; i < size(dataRecord); i++)
+        for (int i = 10; i <= 60; i += 10)
+        {
+            intVector.clear();
+            intVector.resize(i);
+
+            Produce_random(floatVector, 'F');
+            Bubble_sort(floatVector, "Float");
+        }
+
+        for (int i = 100000; i <= 500000; i += 100000)
         {
             floatVector.clear();
-            floatVector.resize(dataRecord[i]);
-
+            floatVector.resize(i);
             Produce_random(floatVector, 'F');
             Bubble_sort(floatVector, "Float");
         }
 
         // (double)雙倍精度浮點數型態
         cout << "\n# (double)雙倍精度浮點數型態---------------\n" << endl;
-        for (int i = 0; i < size(dataRecord); i++)
+        for (int i = 10; i <= 60; i += 10)
         {
             doubleVector.clear();
-            doubleVector.resize(dataRecord[i]);
+            doubleVector.resize(i);
+
+            Produce_random(doubleVector, 'D');
+            Bubble_sort(doubleVector, "Double");
+        }
+
+        for (int i = 100000; i <= 500000; i += 100000)
+        {
+            doubleVector.clear();
+            doubleVector.resize(i);
 
             Produce_random(doubleVector, 'D');
             Bubble_sort(doubleVector, "Double");
@@ -284,10 +317,20 @@ int main()
 
         // (string)字串型態，6個字母
         cout << "\n# (string)字串型態，6個字母---------------\n" << endl;
-        for (int i = 0; i < size(dataRecord); i++)
+        for (int i = 10; i <= 60; i += 10)
         {
             stringVector.clear();
-            stringVector.resize(dataRecord[i]);
+            stringVector.resize(i);
+
+            Produce_Str_random(stringVector);
+            Bubble_sort(stringVector, "String");
+        }
+
+        cout << "\n# (string)字串型態，6個字母---------------\n" << endl;
+        for (int i = 100000; i <= 500000; i += 100000)
+        {
+            stringVector.clear();
+            stringVector.resize(i);
 
             Produce_Str_random(stringVector);
             Bubble_sort(stringVector, "String");
